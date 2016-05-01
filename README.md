@@ -22,15 +22,20 @@ Call `stop()` to turn things off.
 
 ### Configuration
 
-The following variables are passed into `init()` as an object of name/value pairs. For example:
+You can customize how `DiffCamEngine` behaves by passing an object of name/value pairs into `init()`. For example:
 
 ``` javascript
 DiffCamEngine.init({
 	video: myVideo,
 	captureIntervalTime: 50,
+	captureCallback: myCaptureHandler
 	// etc.
 });
 ```
+
+##### Variables
+
+The following variables can be passed into `init()`:
 
 | Name | Default | Description |
 | --- | --- | --- |
@@ -46,6 +51,8 @@ DiffCamEngine.init({
 | includeMotionBox | false | Flag to calculate and display (on motionCanvas) the bounding box of motion |
 | includeMotionPixels | false | Flag to include data indicating all the changed pixels |
 
+##### Callbacks
+
 There are also a couple callback functions you can specify. This is the primary way of interacting with `DiffCamEngine` during execution. Pass these into `init()` just like the variables above.
 
 | Name | Description |
@@ -55,9 +62,9 @@ There are also a couple callback functions you can specify. This is the primary 
 | startCompleteCallback | Called once the webcam has begun streaming |
 | captureCallback | Called after a captured image from the stream has been evaluated |
 
-`captureCallback` is the only one with parameters. The parameters are:
+`captureCallback` is the only one with a parameter. This parameter is an object with multiple properties on it. These properties are:
 
-| Param | Description |
+| Property | Description |
 | --- | --- |
 | imageData | The imageData object for the captured image |
 | score | The evaluated score for the captured image |
@@ -67,5 +74,18 @@ There are also a couple callback functions you can specify. This is the primary 
 | getURL | Convenience function, returns imageData converted to a URL suitable for setting as the src of an image |
 | checkMotionPixel | Convenience function, takes in an x and y cooridnate, returns a boolean indicating if the pixel at that location has changed |
 
+### Functions
 
-More documentation is coming soon. For now, check out my `diff-cam-scratchpad` repo for examples. If you're trying to run this locally, check out this guide: https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally.
+`DiffCamEngine` exposes the following public functions:
+
+| Function | Description |
+| --- | --- |
+| init | Initializes everything and requests permission to access the webcam |
+| start | Begin streaming from the webcam |
+| stop | Stop streaming from the webcam |
+| getPixelDiffThreshold / setPixelDiffThreshold | Get and set pixelDiffThreshold during execution |
+| getScoreThreshold / setScoreThreshold | Get and set scoreThreshold during execution |
+
+### Examples
+
+Check out https://github.com/lonekorean/diff-cam-scratchpad (specifically /diff-cam-example and /turret-security) for examples that use diff-cam-engine. Check out https://github.com/lonekorean/diff-cam-feed for a more complex web app powered by diff-cam-engine.
