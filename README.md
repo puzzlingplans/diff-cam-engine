@@ -83,8 +83,10 @@ There are also a couple callback functions you can specify. This is the primary 
 | init | Initializes everything and requests permission to access the webcam |
 | start | Begin streaming from the webcam |
 | stop | Stop streaming from the webcam |
-| getPixelDiffThreshold / setPixelDiffThreshold | Get and set pixelDiffThreshold during execution |
-| getScoreThreshold / setScoreThreshold | Get and set scoreThreshold during execution |
+| getPixelDiffThreshold | Get pixelDiffThreshold during execution |
+| setPixelDiffThreshold | Set pixelDiffThreshold during execution |
+| getScoreThreshold | Get scoreThreshold during execution |
+| setScoreThreshold | Set scoreThreshold during execution |
 
 ### Examples
 
