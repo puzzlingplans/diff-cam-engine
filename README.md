@@ -4,9 +4,9 @@ Core engine for building motion detection web apps.
 
 ### Usage
 
-`diff-cam-engine.js` provides a `DiffCamEngine` object that does all the heavy lifting. This includes accessing the webcam, capturing snapshots, and evaluating any motion that has taken place.
+`diff-cam-engine.js` provides a `DiffCamEngine` object that accesses the webcam, captures images from it, and evaluates motion.
 
-You'll almost certainly want to use the `adapter.js` shim, which is available (and has instructions for direct linking) here: https://github.com/webrtc/adapter. Add it before `diff-cam-engine.js`.
+You'll want to use the `adapter.js` shim, which is available here: https://github.com/webrtc/adapter. Add it before `diff-cam-engine.js`.
 
 With that in place, call `DiffCamEngine.init()` to initialize. This will set things up and ask the user for permission to access the webcam.
 
