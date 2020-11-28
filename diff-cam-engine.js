@@ -152,6 +152,9 @@ var DiffCamEngine = (function() {
 				getURL: function() {
 					return getCaptureUrl(this.imageData);
 				},
+				getCanvas: function() {
+					return getCaptureCanvas(this.imageData);
+				},
 				checkMotionPixel: function(x, y) {
 					return checkMotionPixel(this.motionPixels, x, y)
 				}
@@ -233,6 +236,12 @@ var DiffCamEngine = (function() {
 		// may as well borrow captureCanvas
 		captureContext.putImageData(captureImageData, 0, 0);
 		return captureCanvas.toDataURL();
+	}
+
+	function getCaptureCanvas(captureImageData) {
+		// may as well borrow captureCanvas
+		captureContext.putImageData(captureImageData, 0, 0);
+		return captureCanvas;
 	}
 
 	function checkMotionPixel(motionPixels, x, y) {
